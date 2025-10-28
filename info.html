@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас | Cuppa Joy</title>
+    <link rel="stylesheet" href="info.css">
+</head>
+<body>
+    <header>
+        <div class="logo-cont">
+            <a href="home.html"><img src="image/logo.svg" alt="logo"></a>
+            <h1 class="h-text">Cuppa <br> Joy</h1>
+        </div>
+        <div class="menu-dropdown-container">
+            <h1 class="h-text menu-burger" id="burger-menu">≡</h1>
+            <nav class="dropdown-menu" id="dropdown-menu">
+                <a href="menu.html">Меню</a>
+                <a href="info.html">О нас</a>
+                <a href="gallery.html">Галерея</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="reviews.html">Наши отзывы</a>
+            </nav>
+        </div>
+    </header>
+    <div class="info-cont">
+        <h1 style="margin-bottom: 30px;">О нас</h1>
+        <h2 class="history-title">Наша история</h2>
+        <p class="history-text">
+            История кофейни "Cuppa Joy" началась с простого желания поделиться радостью от чашки ароматного кофе. Основательница этой уютной кофейни, Анна, всегда была влюблена в кофе. Для неё он был больше чем просто напиток – это было средство для общения, источник энергии и вдохновения. Каждое утро она начинала с того, чтобы приготовить себе идеальный капучино, наслаждаясь каждым моментом процесса: от запаха свежемолотых зёрен до нежных пузырьков молочной пены.<br>
+            Однажды, путешествуя по Италии, Анна попала в маленькую семейную кофейню в Риме. Там она впервые попробовала настоящий эспрессо, приготовленный с любовью и вниманием к каждой детали. Этот момент стал переломным в её жизни. Она поняла, что хочет создать такое же место у себя дома, где люди могли бы наслаждаться вкуснейшим кофе, погружаясь в атмосферу тепла и уюта.<br>
+            Название "Cuppa Joy" родилось само собой. "Cup" – это, конечно, чашка, а "Joy" – радость. Анна хотела, чтобы каждая чашка кофе приносила людям радость и удовольствие, помогала им начать день с хорошего настроения.
+        </p>
+        <h2 class="team-title">Наша команда</h2>
+        <div class="team-slider">
+            <button class="team-arrow" id="team-prev">&#x2039;</button>
+            <div class="team-card" id="team-card"></div>
+            <button class="team-arrow" id="team-next">&#x203A;</button>
+        </div>
+        <h2 class="principles-title">Наши принципы</h2>
+        <p class="principles-text">
+            Ручная работа. Мы гордимся тем, что все процессы приготовления кофе выполняются вручную. От выбора зёрен до их обжарки и помола – каждая деталь важна для создания идеального напитка.<br>
+            Качество превыше всего. Мы используем только лучшие сорта арабики, тщательно отобранные нашими бариста. Обжарка происходит небольшими партиями, что позволяет сохранить уникальные вкусовые ноты каждого зёрна.<br>
+            Каждое ваше пожелание – наш приоритет. Будь то крепкий эспрессо или нежный латте с любимым сиропом – мы приготовим напиток так, как вам нравится.<br>
+            В нашем заведении вы всегда найдёте уголок спокойствия и тепла. Здесь можно насладиться моментом, расслабиться после рабочего дня или провести время в приятной компании.
+        </p>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <span class="footer-title">График работы:</span>
+            <div>Пн - Вс<br>8.00 - 22.00</div>
+        </div>
+        <div class="footer-logo">
+            <img src="image/logo.svg" alt="logo-fot" />
+        </div>
+        <div class="footer-section">
+            <span class="footer-title">Контакты:</span>
+            <div>8 987 866 4664<br>cuppa73@gmail.com</div>
+        </div>
+    </footer>
+    <script src="scr_menu.js"></script>
+    <script>
+    // Слайдер для блока "Наша команда"
+    const teamMembers = [
+        {
+            img: 'image/team/max.jpg',
+            name: 'Максим<br>Тарасенко',
+            desc: 'Лучший бариста,<br>27 лет',
+            alt: 'Максим Тарасенко'
+        },
+        {
+            img: 'image/team/anna.jpg',
+            name: 'Анна<br>Карпова',
+            desc: 'Директор, <br>24 года',
+            alt: 'Анна Карпова'
+        },
+        {
+            img: 'image/team/marina.jpg',
+            name: 'Марина<br>Каравен',
+            desc: 'Пекарь,<br>22 года',
+            alt: 'Марина Кузнецова'
+        },
+        {
+            img: 'image/team/akir.jpg',
+            name: 'Акир<br>Неревич',
+            desc: 'Официант,<br>22 года',
+            alt: 'Акир Неревич'
+        }
+    ];
+    let teamIndex = 0;
+    const card = document.getElementById('team-card');
+    const prev = document.getElementById('team-prev');
+    const next = document.getElementById('team-next');
+    function renderTeam(idx) {
+        card.innerHTML = `
+            <img src="${teamMembers[idx].img}" alt="${teamMembers[idx].alt}">
+            <div class="team-card-info">
+                <div class="name">${teamMembers[idx].name}</div>
+                <div class="desc">${teamMembers[idx].desc}</div>
+            </div>
+        `;
+    }
+    prev.onclick = function() {
+        teamIndex = (teamIndex - 1 + teamMembers.length) % teamMembers.length;
+        renderTeam(teamIndex);
+    };
+    next.onclick = function() {
+        teamIndex = (teamIndex + 1) % teamMembers.length;
+        renderTeam(teamIndex);
+    };
+    // На случай если карточка уже не первая
+    renderTeam(teamIndex);
+    </script>
+</body>
+</html>

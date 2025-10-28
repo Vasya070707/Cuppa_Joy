@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея | Cuppa Joy</title>
+    <link rel="stylesheet" href="galery.css">
+</head>
+<body>
+    <header>
+        <div class="logo-cont">
+            <a href="home.html"><img src="image/logo.svg" alt="logo"></a>
+            <h1 class="h-text">Cuppa <br> Joy</h1>
+        </div>
+        <div class="menu-dropdown-container">
+            <h1 class="h-text menu-burger" id="burger-menu">≡</h1>
+            <nav class="dropdown-menu" id="dropdown-menu">
+                <a href="menu.html">Меню</a>
+                <a href="info.html">О нас</a>
+                <a href="gallery.html">Галерея</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="reviews.html">Наши отзывы</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1 class="gallery-title">Галерея</h1>
+        <div class="gallery-grid">
+            <img src="image/gallery/1.jpg" alt="Гости в кофейне" class="gallery-img1">
+            <img src="image/gallery/2.jpg" alt="Интерьер кофейни" class="gallery-img2">
+            <img src="image/gallery/3.jpg" alt="Пара с кофе" class="gallery-img1">
+            <img src="image/gallery/4.jpg" alt="Друзья за столиком" class="gallery-img2">
+            <img src="image/gallery/5.jpg" alt="Капучино и латте-арт" class="gallery-img1">
+            <img src="image/gallery/6.jpg" alt="Бариста с кофе" class="gallery-img1"> 
+            <img src="image/gallery/7.jpg" alt="Капучино в бокале" class="gallery-img1">
+            <img src="image/gallery/8.jpg" alt="Дети играют с мукой" class="gallery-img2">
+            <img src="image/gallery/9.jpg" alt="Круассаны" class="gallery-img1">
+            <img src="image/gallery/10.jpg" alt="Зал кофейни вечером" class="gallery-img2">
+            <img src="image/gallery/11.jpg" alt="Пекарь в цеху" class="gallery-img1">
+            <img src="image/gallery/12.jpg" alt="Бариста за работой" class="gallery-img1">
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-section">
+            <span class="footer-title">График работы:</span>
+            <div>Пн - Вс<br>8.00 - 22.00</div>
+        </div>
+        <div class="footer-logo">
+            <img src="image/logo.svg" alt="logo-fot" />
+        </div>
+        <div class="footer-section">
+            <span class="footer-title">Контакты:</span>
+            <div>8 987 866 4664<br>cuppa73@gmail.com</div>
+        </div>
+    </footer>
+    <script src="scr_menu.js"></script>
+    <script>
+    // Увеличение картинки при клике (работает для всех картинок)
+    document.querySelectorAll('.gallery-img1, .gallery-img2').forEach(img => {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (img.classList.contains('zoomed')) {
+                img.classList.remove('zoomed');
+            } else {
+                document.querySelectorAll('.gallery-img1.zoomed, .gallery-img2.zoomed').forEach(i => i.classList.remove('zoomed'));
+                img.classList.add('zoomed');
+            }
+        });
+    });
+    // Закрытие увеличения по клику вне картинки
+    document.addEventListener('click', function(e) {
+        if (!e.target.classList.contains('gallery-img1') && !e.target.classList.contains('gallery-img2')) {
+            document.querySelectorAll('.gallery-img1.zoomed, .gallery-img2.zoomed').forEach(i => i.classList.remove('zoomed'));
+        }
+    });
+    </script>
+</body>
+</html>
