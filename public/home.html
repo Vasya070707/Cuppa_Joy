@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная | Cuppa Joy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-cont">
+            <img src="image/logo.svg" alt="logo">
+            <h1 class="h-text">Cuppa <br> Joy</h1>
+        </div>
+        <div class="menu-dropdown-container">
+            <button class="h-text menu-burger" id="burger-menu">≡</button>
+            <nav class="dropdown-menu" id="dropdown-menu">
+                <a href="menu.html">Меню</a>
+                <a href="info.html">О нас</a>
+                <a href="gallery.html">Галерея</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="reviews.html">Наши отзывы</a>
+            </nav>
+        </div>
+    </header>
+    <div class="cuppa-text">
+        <h1 class="cuppa">Cuppa Joy- <br>
+            уютное место для вашего дня</h1>
+        <a href="menu.html"><button class="menu">Посмотреть меню</button></a>
+    </div>
+    <div class="info-cont">
+        <h1>О нас</h1>
+        <div class="text-info">
+            <p>В нашей уютной кофейне мы гордимся тем, что каждое зернышко 
+                кофе проходит через руки наших опытных бариста. Мы тщательно
+                отбираем лучшие сорта арабики и робусты со всего мира, чтобы 
+                предложить вам уникальный вкус и аромат. Каждый напиток готовится 
+                вручную, с любовью и вниманием к деталям. Мы используем только 
+                свежеобжаренные зерна, которые раскрывают всю полноту своих вкусовых 
+                качеств именно тогда, когда попадают в вашу чашку.
+                Мы верим, что настоящий кофе — это искусство, требующее мастерства и 
+                страсти. Наши бариста постоянно совершенствуют свои навыки, 
+                экспериментируют с рецептами и создают новые сочетания вкусов.</p>
+            <i><u><a href="">Читать далее...</a></u></i>
+        </div>
+    </div>
+    <div class="plusy">
+        <h1>Наши преимущества</h1>
+        <div class="plusy-item">
+            <img src="image/coffee.svg" alt="">
+            <img src="image/bread.svg" alt="">
+            <img src="image/bokal.svg" alt="">
+            <img src="image/wi-fi.svg" alt="">
+        </div>
+    </div>
+    <div class="order-cont">
+        <h1>Заказать онлайн</h1>
+        <form id="orderForm" class="order-form">
+
+            <div class="form-field">
+                <label for="name">Имя:</label>
+                <input name="name" type="text" id="name" required>
+            </div>
+
+            <div class="form-field">
+                <label for="number">Телефон:</label>
+                <input name="number" type="number" id="phone" required>
+            </div>
+
+            <div class="form-field">
+                <label for="address">Адрес:</label>
+                <input name="adress" type="text" id="address" required>
+            </div>
+
+            <div class="form-field">
+                <label for="order">Заказ:</label>
+                <input name="order" type="text" id="order" required>
+            </div>
+
+            <div class="order-button-cont">
+                <button type="submit" class="order-button">Заказать</button>
+            </div>
+
+        </form>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <span class="footer-title">График работы:</span>
+            <div>Пн - Вс<br>8.00 - 22.00</div>
+        </div>
+        <div class="footer-logo">
+            <img src="image/logo.svg" alt="logo-fot" />
+        </div>
+        <div class="footer-section">
+            <span class="footer-title">Контакты:</span>
+            <div>8 987 866 4664<br>cuppa73@gmail.com</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
