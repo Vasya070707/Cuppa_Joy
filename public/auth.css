@@ -1,0 +1,121 @@
+.auth-container {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #D5B68A;
+    border: 1px solid #4A3425;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+    color: #4A3425;
+    font-size: 48px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    color: #4A3425;
+    font-size: 18px;
+}
+
+.form-field input {
+    width: 100%;
+    height: 50px;
+    padding: 12px;
+    border: 1px solid #4A3425;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #F8EEDD;
+    color: #4A3425;
+    font-family: 'lora';
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #4A3425;
+    box-shadow: 0 0 0 2px rgba(74, 52, 37, 0.2);
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.auth-button {
+    background-color: #4A3425;
+    color: #F8EEDD;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'lora';
+    transition: background-color 0.2s;
+}
+
+.auth-button:hover {
+    background-color: #5a4435;
+}
+
+.toggle-button {
+    background-color: #F8EEDD;
+    color: #4A3425;
+    border: 1px solid #4A3425;
+}
+
+.toggle-button:hover {
+    background-color: #aa906c;
+    color: #4A3425;
+}
+
+@media screen and (max-width: 765px) {
+    .auth-container {
+        margin: 40px 20px;
+        padding: 30px 20px;
+    }
+
+    .auth-title {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .auth-container {
+        margin: 30px 15px;
+        padding: 25px 15px;
+    }
+
+    .auth-title {
+        font-size: 28px;
+    }
+
+    .form-field input {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .auth-button {
+        height: 45px;
+        font-size: 16px;
+    }
+}
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль | Cuppa Joy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header>
+        <div class="logo-cont">
+            <a href="home.html"><img src="image/logo.svg" alt="logo"></a>
+            <h1 class="h-text">Cuppa <br> Joy</h1>
+        </div>
+        <div class="menu-dropdown-container">
+            <button class="h-text menu-burger" id="burger-menu">≡</button>
+            <nav class="dropdown-menu" id="dropdown-menu">
+                <a href="menu.html">Меню</a>
+                <a href="info.html">О нас</a>
+                <a href="gallery.html">Галерея</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="reviews.html">Наши отзывы</a>
+                <a href="profil.html">Профиль</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <h1 class="profile-title"><span id="userName">...</span></h1>
+            <div class="user-info">
+                <div class="user-info-item">Ваш ID - <span id="userId">...</span></div>
+            </div>
+            <button class="logout-button" onclick="logout()">Выйти</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-section">
+            <span class="footer-title">График работы:</span>
+            <div>Пн - Вс<br>8.00 - 22.00</div>
+        </div>
+        <div class="footer-logo">
+            <img src="image/logo.svg" alt="logo-fot" />
+        </div>
+        <div class="footer-section">
+            <span class="footer-title">Контакты:</span>
+            <div>8 987 866 4664<br>cuppa73@gmail.com</div>
+        </div>
+    </footer>
+
+    <script src="scr_menu.js"></script>
+    <script>
+        // Получаем userId из URL или localStorage
+        const urlParams = new URLSearchParams(window.location.search);
+        let userId = urlParams.get('userId');
+        
+        // Если userId нет в URL, пытаемся получить из localStorage
+        if (!userId) {
+            userId = localStorage.getItem('userId');
+        }
+
+        if (!userId) {
+            window.location.href = '/login.html';
+        } else {
+            // Загружаем данные пользователя
+            loadProfile();
+        }
+
+        async function loadProfile() {
+            try {
+                const res = await fetch(`/profile/${userId}`);
+                const user = await res.json();
+                
+                if (res.ok) {
+                    document.getElementById('userName').textContent = user.name;
+                    document.getElementById('userId').textContent = user.userId || userId;
+                    // Сохраняем userId в localStorage при загрузке профиля
+                    localStorage.setItem('userId', user.userId || userId);
+                } else {
+                    localStorage.removeItem('userId');
+                    window.location.href = '/login.html';
+                }
+            } catch (err) {
+                localStorage.removeItem('userId');
+                window.location.href = '/login.html';
+            }
+        }
+
+        function logout() {
+            // Удаляем userId из localStorage при выходе
+            localStorage.removeItem('userId');
+            window.location.href = '/login.html';
+        }
+    </script>
+</body>
+</html>

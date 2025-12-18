@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация | Cuppa Joy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <header>
+        <div class="logo-cont">
+            <a href="home.html"><img src="image/logo.svg" alt="logo"></a>
+            <h1 class="h-text">Cuppa <br> Joy</h1>
+        </div>
+        <div class="menu-dropdown-container">
+            <button class="h-text menu-burger" id="burger-menu">≡</button>
+            <nav class="dropdown-menu" id="dropdown-menu">
+                <a href="menu.html">Меню</a>
+                <a href="info.html">О нас</a>
+                <a href="gallery.html">Галерея</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="reviews.html">Наши отзывы</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <h1 class="auth-title" id="title">Вход</h1>
+            <form class="auth-form" onsubmit="event.preventDefault(); auth();">
+                <div class="form-field" id="name-field" style="display: none;">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" placeholder="Введите ваше имя">
+                </div>
+                <div class="form-field">
+                    <label for="username">Логин</label>
+                    <input type="text" id="username" placeholder="Введите логин" required>
+                </div>
+                <div class="form-field">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" placeholder="Введите пароль" required>
+                </div>
+                <div class="auth-buttons">
+                    <button type="button" class="auth-button toggle-button" onclick="toggleForm()">
+                        <span id="toggle-text">Перейти к регистрации</span>
+                    </button>
+                    <button type="submit" class="auth-button" id="submit-button">Войти</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-section">
+            <span class="footer-title">График работы:</span>
+            <div>Пн - Вс<br>8.00 - 22.00</div>
+        </div>
+        <div class="footer-logo">
+            <img src="image/logo.svg" alt="logo-fot" />
+        </div>
+        <div class="footer-section">
+            <span class="footer-title">Контакты:</span>
+            <div>8 987 866 4664<br>cuppa73@gmail.com</div>
+        </div>
+    </footer>
+
+    <script src="scr_menu.js"></script>
+    <script>
+        let isRegister = false;
+
+        function toggleForm() {
+            isRegister = !isRegister;
+            const title = document.getElementById('title');
+            const toggleText = document.getElementById('toggle-text');
+            const submitButton = document.getElementById('submit-button');
+            const nameField = document.getElementById('name-field');
+            const nameInput = document.getElementById('name');
+            
+            if (isRegister) {
+                title.textContent = 'Регистрация';
+                toggleText.textContent = 'Уже есть аккаунт? Войти';
+                submitButton.textContent = 'Зарегистрироваться';
+                nameField.style.display = 'flex';
+                nameInput.required = true;
+            } else {
+                title.textContent = 'Вход';
+                toggleText.textContent = 'Перейти к регистрации';
+                submitButton.textContent = 'Войти';
+                nameField.style.display = 'none';
+                nameInput.required = false;
+                nameInput.value = '';
+            }
+        }
+
+        async function auth() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const name = document.getElementById('name').value.trim();
+            
+            if (isRegister) {
+                if (!username || !password || !name) {
+                    return;
+                }
+            } else {
+                if (!username || !password) {
+                    return;
+                }
+            }
+
+            const endpoint = isRegister ? '/register' : '/login';
+            const body = isRegister ? { username, password, name } : { username, password };
+
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                
+                const result = await res.json();
+
+                if (result.success) {
+                    // Сохраняем userId в localStorage
+                    localStorage.setItem('userId', result.userId);
+                    window.location.href = `/profil.html?userId=${result.userId}`;
+                }
+            } catch (err) {
+                // Ошибки не отображаются
+            }
+        }
+    </script>
+</body>
+</html>

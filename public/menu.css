@@ -167,6 +167,7 @@ a {
     width: 300px;
     padding: 20px 0;
     border: 1px solid black;
+    transition: all 0.3s;
 
     .price {
         background-color: #4A3425;
@@ -178,7 +179,10 @@ a {
         border-radius: 15px;
     }
 }
-
+.menu-item:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0 50px 2px #4A3425;
+}
 .price:hover {
     background-color: rgb(100, 70, 52);
 

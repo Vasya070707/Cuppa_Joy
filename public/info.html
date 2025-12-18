@@ -20,6 +20,7 @@
                 <a href="gallery.html">Галерея</a>
                 <a href="contacts.html">Контакты</a>
                 <a href="reviews.html">Наши отзывы</a>
+                <a href="login.html" id="profile-link">Профиль</a>
             </nav>
         </div>
     </header>
@@ -45,6 +46,19 @@
             В нашем заведении вы всегда найдёте уголок спокойствия и тепла. Здесь можно насладиться моментом, расслабиться после рабочего дня или провести время в приятной компании.
         </p>
     </div>
+
+    <div class="offers-cont">
+        <h2 class="offers-form-title">У вас есть предложения?</h2>
+        <form action="" class="offers-form" name="offersForm">
+            <label>Имя:
+                <input type="text" name="name" required>
+            </label>
+            <label>Предложение:
+                <textarea type="text" name="offers" rows="3" required></textarea>
+            </label>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
     <footer class="footer">
         <div class="footer-section">
             <span class="footer-title">График работы:</span>
@@ -59,56 +73,9 @@
         </div>
     </footer>
     <script src="scr_menu.js"></script>
-    <script>
-    const teamMembers = [
-        {
-            img: 'image/team/max.jpg',
-            name: 'Максим<br>Тарасенко',
-            desc: 'Лучший бариста,<br>27 лет',
-            alt: 'Максим Тарасенко'
-        },
-        {
-            img: 'image/team/anna.jpg',
-            name: 'Анна<br>Карпова',
-            desc: 'Директор, <br>24 года',
-            alt: 'Анна Карпова'
-        },
-        {
-            img: 'image/team/marina.jpg',
-            name: 'Марина<br>Каравен',
-            desc: 'Пекарь,<br>22 года',
-            alt: 'Марина Кузнецова'
-        },
-        {
-            img: 'image/team/akir.jpg',
-            name: 'Акир<br>Неревич',
-            desc: 'Официант,<br>22 года',
-            alt: 'Акир Неревич'
-        }
-    ];
-    let teamIndex = 0;
-    const card = document.getElementById('team-card');
-    const prev = document.getElementById('team-prev');
-    const next = document.getElementById('team-next');
-    function renderTeam(idx) {
-        card.innerHTML = `
-            <img src="${teamMembers[idx].img}" alt="${teamMembers[idx].alt}">
-            <div class="team-card-info">
-                <div class="name">${teamMembers[idx].name}</div>
-                <div class="desc">${teamMembers[idx].desc}</div>
-            </div>
-        `;
-    }
-    prev.onclick = function() {
-        teamIndex = (teamIndex - 1 + teamMembers.length) % teamMembers.length;
-        renderTeam(teamIndex);
-    };
-    next.onclick = function() {
-        teamIndex = (teamIndex + 1) % teamMembers.length;
-        renderTeam(teamIndex);
-    };
-    // На случай если карточка уже не первая
-    renderTeam(teamIndex);
+    <script src="profile-link.js"></script>
+    <script src="info.js">
+    
     </script>
 </body>
 </html>
